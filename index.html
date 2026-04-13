@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -15,85 +15,160 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">MUKUND KUMAR</a>
-                <ul>
-                    <li><a href="#impact">Impact</a></li>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Stack</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Innovation</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero-section reveal">
-            <span class="hero-tag">STAFF ENGINEER</span>
-            <h1>Architecting Systems <br>at Global Scale.</h1>
-            <p>I build high-scale distributed systems and data platforms processing over 1B+ messages daily. Specializing in infrastructure modernization and engineering leadership.</p>
-            <div class="btn-group">
-                <a href="mailto:mukundnjoy@gmail.com" class="btn btn-primary">Let's Connect</a>
-                <a href="Mukund_Kumar_Resume.pdf" class="btn btn-outline" download>Download CV</a>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="reveal">
+                    <span class="badge">Staff Data & Distributed Systems Engineer</span>
+                    <h1>Building for <span class="highlight">Billion-Scale</span> Impact.</h1>
+                    <p class="hero-subtext">14+ years of engineering mastery in architecting resilient, high-throughput distributed systems and driving enterprise-wide modernization for industry leaders.</p>
+                    <div class="btn-group">
+                        <a href="mailto:mukundnjoy@gmail.com" class="btn btn-primary">Get in Touch</a>
+                        <a href="Mukund_Kumar_Resume.pdf" class="btn btn-outline" download>Download CV</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="impact" class="grid-layout">
-            <div class="card span-6 stat-card reveal">
-                <h3>14+</h3>
-                <p>Years of Engineering Mastery</p>
-            </div>
-            <div class="card span-6 stat-card reveal">
-                <h3>1B+</h3>
-                <p>Daily Messages Processed</p>
-            </div>
-            <div class="card span-6 stat-card reveal">
-                <h3>$77K+</h3>
-                <p>Annual Savings per Brand</p>
-            </div>
-            <div class="card span-6 stat-card reveal">
-                <h3>21+</h3>
-                <p>Engineers Led & Mentored</p>
+        <!-- Key Metrics Section -->
+        <section id="impact" class="impact-section">
+            <div class="container">
+                <div class="metrics-grid">
+                    <div class="metric-card reveal">
+                        <div class="metric-value">1B+</div>
+                        <div class="metric-label">Daily Messages Processed</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value">14+</div>
+                        <div class="metric-label">Years of Engineering Experience</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value">$77K+</div>
+                        <div class="metric-label">Annual Savings per Brand</div>
+                    </div>
+                    <div class="metric-card reveal">
+                        <div class="metric-value">21+</div>
+                        <div class="metric-label">Engineers Managed & Mentored</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="experience" class="reveal" style="margin-bottom: 120px;">
-            <div class="section-header">
-                <h2>Selected Impact</h2>
+        <!-- About Section -->
+        <section id="about" class="section section-dark">
+            <div class="container reveal">
+                <div class="section-title">
+                    <span>01.</span>
+                    <h2>Executive Summary</h2>
+                </div>
+                <div class="about-content">
+                    <p>Solutions-oriented Staff Engineer with a proven track record of developing and implementing complex technical solutions for industry leaders. I specialize in architecting high-scale, reliable platforms and driving enterprise infrastructure modernization.</p>
+                    <p>Operating at a Staff scope, I have owned multi-brand ecosystems, executed zero-disruption cloud migrations, and built resilient, configuration-driven pipelines. I am adept at scaling engineering organizations and accelerating velocity through technical strategy and mentorship.</p>
+                </div>
             </div>
-            <div class="card span-12">
-                <div class="experience-list">
-                    <div class="exp-item">
-                        <div class="exp-date">2023 — Present</div>
-                        <div class="exp-content">
-                            <h4>Staff Engineer @ PayPal</h4>
-                            <p>Technical owner for multi-brand real-time data platforms.</p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="container reveal">
+                <div class="section-title">
+                    <span>02.</span>
+                    <h2>Professional Journey</h2>
+                </div>
+                <div class="timeline">
+                    <!-- PayPal -->
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">Apr 2023 — Present</span>
+                            <span class="timeline-org">PayPal Inc.</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Member of Technical Staff - 1 (Staff Scope)</h3>
                             <ul>
-                                <li>Designed AOP-based HTTP interception framework, reducing integration testing time by 90%.</li>
-                                <li>Architected BigQuery rationalization initiative delivering significant annual cost savings.</li>
-                                <li>Reduced support effort from 160+ hours to 20 hours/sprint via observability overhaul.</li>
+                                <li><strong>Technical Owner:</strong> Leading multi-brand real-time and batch data platforms processing 1B+ messages/day.</li>
+                                <li><strong>HTTP Interception Framework:</strong> Designed an AOP-based framework reducing integration testing time by 90%.</li>
+                                <li><strong>BigQuery Rationalization:</strong> Architected initiatives delivering $77K+ annual savings per brand.</li>
+                                <li><strong>Ideation Lead:</strong> Spearheading next-gen product designs targeting a 1-2% revenue increase across the organization.</li>
+                                <li><strong>Observability:</strong> Reduced support effort from 160+ hours/sprint to ~20 hours via comprehensive observability improvements.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="exp-item">
-                        <div class="exp-date">2020 — 2023</div>
-                        <div class="exp-content">
-                            <h4>Technical Manager @ Egen (SpringML)</h4>
-                            <p>Led cross-functional teams to deliver critical infrastructure.</p>
+                    <!-- Egen -->
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">Mar 2020 — Apr 2023</span>
+                            <span class="timeline-org">Egen (SpringML Inc.)</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Technical Manager - GCP</h3>
                             <ul>
-                                <li>Engineered the world's first COVID-19 Contact Tracing app (Covidwise).</li>
-                                <li>Architected 100+ TB distributed data lake on GCP for high-volume analytics.</li>
-                                <li>Built enterprise integration platforms processing 3M+ messages/day using Beam & Snowflake.</li>
+                                <li><strong>Team Leadership:</strong> Hired and groomed a 21-member cross-functional team (including 2 DevOps).</li>
+                                <li><strong>Data Lake:</strong> Architected a 100+ TB distributed data lake on GCP for competitor analytics (ingesting 1 TB JSON files).</li>
+                                <li><strong>COVID-19 Response:</strong> Engineered the world's 1st COVID-19 Contact Tracing mobile app (Covidwise) for multiple US states.</li>
+                                <li><strong>Person Matching:</strong> Designed a CJIS-compliant entity resolution platform for 5M+ records in Massachusetts.</li>
+                                <li><strong>Integration Platform:</strong> Built solutions handling 3M+ messages/day using Apache Beam, Dataflow, and Snowflake.</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="exp-item">
-                        <div class="exp-date">2016 — 2020</div>
-                        <div class="exp-content">
-                            <h4>Project Leader @ Oracle</h4>
-                            <p>Modernized legacy SCM pipelines and performance bottlenecks.</p>
+                    <!-- Oracle -->
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">Feb 2016 — Mar 2020</span>
+                            <span class="timeline-org">Oracle</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Project Leader</h3>
                             <ul>
-                                <li>Re-architected 10+ PLSQL pipelines, reducing processing time from 100m to 85s.</li>
-                                <li>Engineered "Smart Excel" tool for validating massive datasets (100K+ records).</li>
+                                <li><strong>Pipeline Performance:</strong> Re-architected PLSQL pipelines, reducing 800K-item processing from 100m to 85s.</li>
+                                <li><strong>Smart Excel:</strong> Built a VBA.NET tool from scratch for PMs to validate and import 10+ million items per day.</li>
+                                <li><strong>Enterprise SOA:</strong> Led design and development of multiple enterprise-level SOA and microservice applications for SCM Cloud.</li>
+                                <li><strong>Cloud Optimization:</strong> Optimized cross-module performance (Inventory, Shipping, Receiving) by 20%.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Lookout -->
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">Jun 2014 — Feb 2016</span>
+                            <span class="timeline-org">Lookout (CipherCloud)</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Software Engineer</h3>
+                            <ul>
+                                <li><strong>XML Merging Framework:</strong> Designed framework for 200+ config files, accelerating upgrades from days to 20 minutes.</li>
+                                <li><strong>Security:</strong> Owned email encryption module; upgraded protocols to remove SSLv3 vulnerabilities and implemented ECDHE 768-bit algorithms.</li>
+                                <li><strong>Root-Cause Analysis:</strong> Coordinated with cross-functional teams for critical issue resolution and system stability.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- TCS -->
+                    <div class="timeline-item">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">Oct 2011 — May 2014</span>
+                            <span class="timeline-org">TCS</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Systems Engineer</h3>
+                            <ul>
+                                <li><strong>Network Services:</strong> Implemented broadband services like E-Line, E-LAN, and VPLS for MET and MSP nodes.</li>
+                                <li><strong>Middleware Redesign:</strong> Re-engineered middleware using Netconf & Yang (RFC 6020) to unify data modeling languages.</li>
+                                <li><strong>Internal Tools:</strong> Developed Alarm Generator and Sniffer Tool for IPTNMS message simulation.</li>
                             </ul>
                         </div>
                     </div>
@@ -101,43 +176,132 @@
             </div>
         </section>
 
-        <section id="skills" class="grid-layout">
-            <div class="card span-8 reveal">
-                <div class="section-header" style="margin-bottom: 32px;">
-                    <h2>Technical Arsenal</h2>
+        <!-- Skills Section -->
+        <section id="skills" class="section section-dark">
+            <div class="container reveal">
+                <div class="section-title">
+                    <span>03.</span>
+                    <h2>Technical Stack</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-cat">
+                        <h3><i class="fas fa-code"></i> Engineering</h3>
+                        <div class="tags">
+                            <span class="tag">Java</span><span class="tag">Python</span><span class="tag">Go</span><span class="tag">Groovy</span><span class="tag">PLSQL</span><span class="tag">Shell Script</span><span class="tag">Spring Boot</span><span class="tag">Hibernate</span><span class="tag">VBA.NET</span>
+                        </div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3><i class="fas fa-server"></i> Architecture</h3>
+                        <div class="tags">
+                            <span class="tag">Distributed Systems</span><span class="tag">Microservices</span><span class="tag">System Design</span><span class="tag">Performance Tuning</span><span class="tag">AOP</span><span class="tag">SOA</span><span class="tag">High Availability</span>
+                        </div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3><i class="fas fa-cloud"></i> Cloud & Data</h3>
+                        <div class="tags">
+                            <span class="tag">GCP</span><span class="tag">Spark</span><span class="tag">BigQuery</span><span class="tag">Snowflake</span><span class="tag">Kafka</span><span class="tag">Terraform</span><span class="tag">CI/CD</span><span class="tag">Dataproc</span><span class="tag">Apache Beam</span><span class="tag">NoSQL (Neo4j)</span>
+                        </div>
+                    </div>
+                    <div class="skill-cat">
+                        <h3><i class="fas fa-users"></i> Leadership</h3>
+                        <div class="tags">
+                            <span class="tag">Team Building</span><span class="tag">Mentoring</span><span class="tag">Hiring</span><span class="tag">Technical Strategy</span><span class="tag">Stakeholder Management</span><span class="tag">Agile/Scrum</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Awards Section -->
+        <section id="accolades" class="section">
+            <div class="container reveal">
+                <div class="dual-grid">
+                    <div class="accolade-box">
+                        <div class="section-title">
+                            <span>04.</span>
+                            <h2>Education</h2>
+                        </div>
+                        <div class="edu-item">
+                            <h4>M.Tech. in AI & ML</h4>
+                            <p><strong>BITS Pilani</strong> | 2023 — 2025</p>
+                        </div>
+                        <div class="edu-item">
+                            <h4>B.Tech. in Computer Science</h4>
+                            <p><strong>KIIT University</strong> | 2007 — 2011</p>
+                        </div>
+                        <div class="cert-list">
+                            <h4>Certifications</h4>
+                            <ul>
+                                <li>Google Cloud Certified Professional Data Engineer</li>
+                                <li>Professional Scrum Master 1</li>
+                                <li>Deep Learning Specialization (Coursera)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="accolade-box">
+                        <div class="section-title">
+                            <span>05.</span>
+                            <h2>Awards & Ranks</h2>
+                        </div>
+                        <ul class="award-list">
+                            <li><strong>Mountain Movers (2022):</strong> Consistent complex delivery.</li>
+                            <li><strong>Project of the Year (2021):</strong> For Covidwise App.</li>
+                            <li><strong>Make a Difference (2019):</strong> Performance tuning contribution.</li>
+                            <li><strong>Shatranj:</strong> 2nd Runner up in Chess Tournament.</li>
+                            <li><strong>IIT JEE (2007):</strong> AIR-6359 (Top 3%)</li>
+                            <li><strong>CUSAT (2007):</strong> AIR-443</li>
+                            <li><strong>KIITEE (2007):</strong> AIR-48 (Merit Scholarship)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Good Section -->
+        <section class="section section-dark">
+            <div class="container reveal">
+                <div class="section-title">
+                    <span>06.</span>
+                    <h2>Giving Back</h2>
                 </div>
                 <div class="tags">
-                    <span class="tag">GCP</span>
-                    <span class="tag">Spark</span>
-                    <span class="tag">BigQuery</span>
-                    <span class="tag">Terraform</span>
-                    <span class="tag">Kafka</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">Go</span>
-                    <span class="tag">Distributed Systems</span>
-                    <span class="tag">Kubernetes</span>
-                    <span class="tag">System Design</span>
+                    <span class="tag">Give India Foundation Volunteer</span>
+                    <span class="tag">Red Cross AP State Branch Volunteer</span>
+                    <span class="tag">Thalassemia & Sickle Cell Society Donor</span>
                 </div>
             </div>
+        </section>
 
-            <div class="card span-4 reveal">
-                <div class="section-header" style="margin-bottom: 32px;">
-                    <h2>Accolades</h2>
-                </div>
-                <div class="experience-list" style="gap: 16px;">
-                    <div class="exp-content">
-                        <p style="margin-bottom: 8px;">• Mountain Movers (2022)</p>
-                        <p style="margin-bottom: 8px;">• Project of the Year (2021)</p>
-                        <p style="margin-bottom: 8px;">• IIT JEE: AIR-6359</p>
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container reveal">
+                <div class="contact-card">
+                    <h2>Ready for the next challenge?</h2>
+                    <p>Always open to discussing distributed systems, cloud architecture, and engineering leadership.</p>
+                    <div class="social-links">
+                        <a href="mailto:mukundnjoy@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.linkedin.com/in/mukund-kumar-32068137/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/mukund-k-sharma" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://leetcode.com/Mukundnjoy" target="_blank"><i class="fas fa-code"></i></a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 100px 0; text-align: center; border-top: 1px solid var(--border-color);">
+    <!-- <footer>
         <div class="container">
+            <p>&copy; 2026 Mukund Kumar. Built for Performance and Scale.</p>
+        </div>
+    </footer> -->
+
+    <footer style="padding: 80px 0 40px; text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 24px;">
+                <a href="https://www.linkedin.com/in/mukund-kumar-32068137/" target="_blank" style="color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s;"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/mukund-k-sharma" target="_blank" style="color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s;"><i class="fa-brands fa-github"></i></a>
+                <a href="https://leetcode.com/Mukundnjoy" target="_blank" style="color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s;"><i class="fa-solid fa-code"></i></a>
+            </div>
             <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Mukund Kumar. Architecting the future of distributed data.</p>
         </div>
     </footer>
