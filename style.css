@@ -263,6 +263,45 @@ h2 {
     margin-bottom: 0;
 }
 
+/* --- Award Cards --- */
+.award-card {
+    padding: 24px;
+    margin: 0 -24px 24px -24px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.award-card:hover {
+    background-color: var(--card-hover);
+}
+
+.award-card h3 {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.award-card h3 span {
+    color: var(--text-main);
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+
+/* --- Skills Category --- */
+.skill-category {
+    margin-bottom: 32px;
+}
+
+.skill-category h3 {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* --- Footer --- */
 .footer {
     padding-bottom: 48px;
