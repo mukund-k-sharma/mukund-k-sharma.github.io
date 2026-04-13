@@ -7,179 +7,139 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">MK</a>
+                <a href="#" class="logo">MUKUND KUMAR</a>
                 <ul>
+                    <li><a href="#impact">Impact</a></li>
                     <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#skills">Stack</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="container">
-        <div class="bento-grid">
-            <!-- Hero Tile -->
-            <div class="bento-item hero-item reveal">
-                <h1>Mukund Kumar</h1>
-                <p>Staff Data & Distributed Systems Engineer specializing in high-scale, reliable platforms and enterprise modernization.</p>
-                <div class="btn-group">
-                    <a href="mailto:mukundnjoy@gmail.com" class="btn btn-primary">Hire Me</a>
-                    <a href="Mukund_Kumar_Resume.pdf" class="btn btn-outline" download>Resume</a>
-                </div>
+        <section class="hero-section reveal">
+            <span class="hero-tag">STAFF ENGINEER</span>
+            <h1>Architecting Systems <br>at Global Scale.</h1>
+            <p>I build high-scale distributed systems and data platforms processing over 1B+ messages daily. Specializing in infrastructure modernization and engineering leadership.</p>
+            <div class="btn-group">
+                <a href="mailto:mukundnjoy@gmail.com" class="btn btn-primary">Let's Connect</a>
+                <a href="Mukund_Kumar_Resume.pdf" class="btn btn-outline" download>Download CV</a>
             </div>
+        </section>
 
-            <!-- Stats Tiles -->
-            <div class="bento-item stat-item reveal">
+        <section id="impact" class="grid-layout">
+            <div class="card span-6 stat-card reveal">
                 <h3>14+</h3>
-                <p>Years Experience</p>
+                <p>Years of Engineering Mastery</p>
             </div>
-            <div class="bento-item stat-item reveal">
+            <div class="card span-6 stat-card reveal">
                 <h3>1B+</h3>
-                <p>Daily Messages</p>
+                <p>Daily Messages Processed</p>
             </div>
-            <div class="bento-item stat-item reveal">
+            <div class="card span-6 stat-card reveal">
                 <h3>$77K+</h3>
-                <p>Annual Savings</p>
+                <p>Annual Savings per Brand</p>
             </div>
-            <div class="bento-item stat-item reveal">
+            <div class="card span-6 stat-card reveal">
                 <h3>21+</h3>
-                <p>Engineers Managed</p>
+                <p>Engineers Led & Mentored</p>
             </div>
+        </section>
 
-            <!-- Experience Tile -->
-            <div id="experience" class="bento-item experience-item reveal">
-                <h2><i class="fas fa-briefcase"></i> Experience</h2>
-                <div class="exp-card">
-                    <span class="date">Apr 2023 – Present</span>
-                    <h4>MTS 1 (Staff Scope) @ PayPal</h4>
-                    <ul>
-                        <li>Owner for multi-brand real-time data platforms (1B+ messages/day).</li>
-                        <li>Designed AOP-based HTTP interception reducing testing time by 90%.</li>
-                        <li>Architected BigQuery rationalization delivering $77K+ annual savings.</li>
-                    </ul>
-                </div>
-                <div class="exp-card">
-                    <span class="date">Mar 2020 – Apr 2023</span>
-                    <h4>Technical Manager @ egen (SpringML)</h4>
-                    <ul>
-                        <li>Scaled a 21-member cross-functional engineering team.</li>
-                        <li>Engineered the world's 1st COVID-19 Contact Tracing app.</li>
-                        <li>Architected a 100+ TB distributed data lake on GCP.</li>
-                    </ul>
-                </div>
-                <div class="exp-card">
-                    <span class="date">Feb 2016 – Mar 2020</span>
-                    <h4>Project Leader @ Oracle</h4>
-                    <ul>
-                        <li>Reduced PLSQL pipeline processing from 100m to 85s.</li>
-                        <li>Optimized cross-module performance by 20% in SCM Cloud.</li>
-                    </ul>
-                </div>
-                <div class="exp-card">
-                    <span class="date">Jun 2014 – Feb 2016</span>
-                    <h4>Software Engineer @ Lookout</h4>
-                    <ul>
-                        <li>Designed an XML merging framework for 200+ config files.</li>
-                        <li>Owned email encryption module, removing SSLv3 vulnerabilities.</li>
-                    </ul>
-                </div>
-                <div class="exp-card">
-                    <span class="date">Oct 2011 – May 2014</span>
-                    <h4>Systems Engineer @ TCS</h4>
-                    <ul>
-                        <li>Implemented broadband services (E-Line, E-LAN, VPLS) for MET and MSP.</li>
-                        <li>Redesigned middleware using Netconf & Yang (RFC 6020).</li>
-                    </ul>
+        <section id="experience" class="reveal" style="margin-bottom: 120px;">
+            <div class="section-header">
+                <h2>Selected Impact</h2>
+            </div>
+            <div class="card span-12">
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div class="exp-date">2023 — Present</div>
+                        <div class="exp-content">
+                            <h4>Staff Engineer @ PayPal</h4>
+                            <p>Technical owner for multi-brand real-time data platforms.</p>
+                            <ul>
+                                <li>Designed AOP-based HTTP interception framework, reducing integration testing time by 90%.</li>
+                                <li>Architected BigQuery rationalization initiative delivering significant annual cost savings.</li>
+                                <li>Reduced support effort from 160+ hours to 20 hours/sprint via observability overhaul.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-date">2020 — 2023</div>
+                        <div class="exp-content">
+                            <h4>Technical Manager @ Egen (SpringML)</h4>
+                            <p>Led cross-functional teams to deliver critical infrastructure.</p>
+                            <ul>
+                                <li>Engineered the world's first COVID-19 Contact Tracing app (Covidwise).</li>
+                                <li>Architected 100+ TB distributed data lake on GCP for high-volume analytics.</li>
+                                <li>Built enterprise integration platforms processing 3M+ messages/day using Beam & Snowflake.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-date">2016 — 2020</div>
+                        <div class="exp-content">
+                            <h4>Project Leader @ Oracle</h4>
+                            <p>Modernized legacy SCM pipelines and performance bottlenecks.</p>
+                            <ul>
+                                <li>Re-architected 10+ PLSQL pipelines, reducing processing time from 100m to 85s.</li>
+                                <li>Engineered "Smart Excel" tool for validating massive datasets (100K+ records).</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Skills Tile -->
-            <div id="skills" class="bento-item skills-item reveal">
-                <h2><i class="fas fa-tools"></i> Cloud & Data</h2>
+        <section id="skills" class="grid-layout">
+            <div class="card span-8 reveal">
+                <div class="section-header" style="margin-bottom: 32px;">
+                    <h2>Technical Arsenal</h2>
+                </div>
                 <div class="tags">
                     <span class="tag">GCP</span>
-                    <span class="tag">Apache Spark</span>
-                    <span class="tag">Dataproc</span>
+                    <span class="tag">Spark</span>
                     <span class="tag">BigQuery</span>
-                    <span class="tag">Snowflake</span>
                     <span class="tag">Terraform</span>
                     <span class="tag">Kafka</span>
-                </div>
-            </div>
-
-            <!-- Languages Tile -->
-            <div class="bento-item skills-item reveal">
-                <h2><i class="fas fa-code"></i> Engineering</h2>
-                <div class="tags">
                     <span class="tag">Java</span>
                     <span class="tag">Python</span>
                     <span class="tag">Go</span>
                     <span class="tag">Distributed Systems</span>
-                    <span class="tag">Microservices</span>
+                    <span class="tag">Kubernetes</span>
                     <span class="tag">System Design</span>
                 </div>
             </div>
 
-            <!-- Accolades Tile -->
-            <div class="bento-item skills-item reveal">
-                <h2><i class="fas fa-award"></i> Recognition</h2>
-                <div class="exp-card" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">
-                    <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                        <li><strong>Mountain Movers</strong> (2022)</li>
-                        <li><strong>Project of the Year</strong> (2021)</li>
-                        <li><strong>Make a Difference</strong> (2019)</li>
-                        <li><strong>IIT JEE:</strong> AIR-6359</li>
-                    </ul>
+            <div class="card span-4 reveal">
+                <div class="section-header" style="margin-bottom: 32px;">
+                    <h2>Accolades</h2>
                 </div>
-            </div>
-
-            <!-- Projects Tile -->
-            <div id="projects" class="bento-item reveal" style="grid-column: span 4;">
-                <h2><i class="fas fa-rocket"></i> Key Innovations</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h4>NLP Summarizer</h4>
-                        <p>NLP model for NATO's act-foresight group to analyze strategic documents.</p>
-                    </div>
-                    <div class="project-card">
-                        <h4>Entity Resolution</h4>
-                        <p>CJIS-compliant person matching algorithm handling 5M+ records.</p>
-                    </div>
-                    <div class="project-card">
-                        <h4>Smart Excel</h4>
-                        <p>VBA.NET tool for PMs to validate 100K+ records efficiently.</p>
+                <div class="experience-list" style="gap: 16px;">
+                    <div class="exp-content">
+                        <p style="margin-bottom: 8px;">• Mountain Movers (2022)</p>
+                        <p style="margin-bottom: 8px;">• Project of the Year (2021)</p>
+                        <p style="margin-bottom: 8px;">• IIT JEE: AIR-6359</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Contact/Education Tile -->
-            <div id="contact" class="bento-item reveal" style="grid-column: span 4; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                <div>
-                    <h2>Let's Connect</h2>
-                    <div class="social-links">
-                        <a href="mailto:mukundnjoy@gmail.com"><i class="fas fa-envelope"></i></a>
-                        <a href="https://www.linkedin.com/in/mukund-kumar-32068137/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/mukund-k-sharma" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div style="text-align: right;">
-                    <p><strong>BITS Pilani</strong> | M.Tech. AI & ML</p>
-                    <p><strong>KIIT University</strong> | B.Tech. CSE</p>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Mukund Kumar. Built for Distributed Systems.</p>
+    <footer style="padding: 100px 0; text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Mukund Kumar. Architecting the future of distributed data.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
