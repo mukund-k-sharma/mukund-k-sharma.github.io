@@ -5,142 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mukund Kumar | Staff Data & Distributed Systems Engineer</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Mukund Kumar</h1>
-            <p>Staff Data & Distributed Systems Engineer | Engineering Leader | Cloud Architect</p>
             <nav>
+                <a href="#" class="logo">MK</a>
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Expertise</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education & Awards</a></li>
-                    <li><a href="#publications">Blogs</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section id="about" class="container">
-        <h2>About Me</h2>
-        <p>I am an Engineering Leader and Data & Distributed Systems Engineer with 14+ years of experience scaling cloud-native data platforms across fintech, enterprise SaaS, and public-sector ecosystems. Operating at a Staff scope, I specialize in architecting high-scale, reliable platforms and driving enterprise infrastructure modernization.</p>
-        <br>
-        <p>I have a proven track record of owning multi-brand ecosystems processing <strong>1B+ messages/day</strong>, executing zero-disruption cloud migrations, and building resilient, configuration-driven pipelines. I am adept at scaling engineering organizations (20+ member teams), accelerating engineering velocity, and translating complex regulatory requirements into highly reliable, automated systems that directly drive 5-10% YoY revenue growth.</p>
-    </section>
-
-    <section id="skills" class="container">
-        <h2>Core Competencies & Technical Expertise</h2>
-        <div class="project-card">
-            <p><strong>Cloud & Data Platforms:</strong> GCP, Apache Spark, Dataproc, Apache Beam, BigQuery, Snowflake, CI/CD, Terraform</p>
-            <p><strong>Architecture & Leadership:</strong> Distributed Systems, Microservices, Performance Engineering, Streaming Pipelines, Engineering Org Scaling, Technical Strategy, Revenue-Linked Delivery</p>
-            <p><strong>Languages & Frameworks:</strong> Java, Python, Go, SQL, Groovy, PLSQL, Shell Script, Spring Boot, Hibernate</p>
-            <p><strong>Certifications:</strong> Google Cloud Certified Professional Data Engineer | Professional Scrum Master 1</p>
+    <section id="hero">
+        <div class="container">
+            <h1 class="reveal">Mukund Kumar</h1>
+            <p class="reveal">Staff Data & Distributed Systems Engineer | Engineering Leader | Cloud Architect</p>
+            <div class="stats reveal">
+                <div class="stat-item">
+                    <h3>14+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1B+</h3>
+                    <p>Daily Messages</p>
+                </div>
+                <div class="stat-item">
+                    <h3>$77K+</h3>
+                    <p>Annual Savings/Brand</p>
+                </div>
+                <div class="stat-item">
+                    <h3>21+</h3>
+                    <p>Engineers Managed</p>
+                </div>
+            </div>
+            <div class="reveal" style="margin-top: 30px;">
+                <a href="mailto:mukundnjoy@gmail.com" class="btn">Hire Me</a>
+                <a href="Mukund_Kumar_Resume.pdf" class="btn btn-outline" download>Download Resume</a>
+            </div>
         </div>
     </section>
 
-    <section id="experience" class="container">
+    <section id="about" class="container reveal">
+        <h2>About Me</h2>
+        <p>I am a Solutions-orientated Staff Engineer with 14+ years of experience developing and implementing complex technical solutions for industry leaders. I specialize in architecting high-scale, reliable platforms and driving enterprise infrastructure modernization.</p>
+        <br>
+        <p>Operating at a Staff scope, I have a proven track record of owning multi-brand ecosystems processing <strong>1B+ messages/day</strong>, executing zero-disruption cloud migrations, and building resilient, configuration-driven pipelines. I am adept at scaling engineering organizations (20+ member teams) and accelerating engineering velocity.</p>
+    </section>
+
+    <section id="skills" class="container reveal">
+        <h2>Core Competencies</h2>
+        
+        <div class="skill-category">
+            <h3><i class="fas fa-cloud"></i> Cloud & Data Platforms</h3>
+            <div class="tags">
+                <span class="tag">GCP</span>
+                <span class="tag">Apache Spark</span>
+                <span class="tag">Dataproc</span>
+                <span class="tag">Apache Beam</span>
+                <span class="tag">BigQuery</span>
+                <span class="tag">Snowflake</span>
+                <span class="tag">Terraform</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">HDFS</span>
+                <span class="tag">Kafka</span>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3><i class="fas fa-microchip"></i> Architecture & Distributed Systems</h3>
+            <div class="tags">
+                <span class="tag">Distributed Systems</span>
+                <span class="tag">Microservices</span>
+                <span class="tag">Performance Engineering</span>
+                <span class="tag">Streaming Pipelines</span>
+                <span class="tag">System Design</span>
+                <span class="tag">Scalability</span>
+                <span class="tag">Reliability</span>
+                <span class="tag">AOP</span>
+                <span class="tag">Wiremock</span>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
+            <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">Python</span>
+                <span class="tag">Go</span>
+                <span class="tag">Groovy</span>
+                <span class="tag">SQL / PLSQL</span>
+                <span class="tag">Shell Script</span>
+                <span class="tag">Spring Boot</span>
+                <span class="tag">Hibernate</span>
+                <span class="tag">VBA.NET</span>
+            </div>
+        </div>
+
+        <div class="skill-category">
+            <h3><i class="fas fa-users"></i> Leadership & Strategy</h3>
+            <div class="tags">
+                <span class="tag">Engineering Org Scaling</span>
+                <span class="tag">Technical Strategy</span>
+                <span class="tag">Team Building</span>
+                <span class="tag">Mentoring</span>
+                <span class="tag">Stakeholder Management</span>
+                <span class="tag">Agile / Scrum</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="container reveal">
         <h2>Professional Experience</h2>
         
-        <div class="project-card">
-            <h3>Senior Data Engineer (CL6) / MTS 1 @ PayPal</h3>
-            <p><em>Apr 2023 – Present | Bengaluru/Chennai, India</em></p>
-            <ul>
-                <li><strong>Architectural Ownership:</strong> Technical owner for multi-brand real-time and batch data platforms (Xoom, Honey, Swift, BCDC, Lifecycle), processing <strong>1B+ messages/day</strong> per brand.</li>
-                <li><strong>Infrastructure Modernization:</strong> Decommissioned legacy on-prem HAVASU infrastructure, architecting a modernization strategy to GCP Dataproc with zero data loss. Architected a BigQuery rationalization initiative (600+ unused tables), delivering <strong>$77K+ annual savings</strong> per brand.</li>
-                <li><strong>Developer Velocity:</strong> Designed an AOP-based HTTP interception framework that reduced integration testing time by 90%. Implemented multi-zone failover and observability improvements, reducing support effort from 160+ hours/sprint to just ~20 hours.</li>
-                <li><strong>Regulatory Execution:</strong> Led Xoom Australia regulatory data launch end-to-end, designing reconciliation architecture and missing-data remediation strategies.</li>
-            </ul>
-        </div>
+        <div class="card-grid">
+            <div class="card">
+                <span class="date">Apr 2023 – Present</span>
+                <h3>MTS 1 (Staff Scope) @ PayPal</h3>
+                <ul>
+                    <li>Technical owner for multi-brand real-time and batch data platforms processing <strong>1B+ messages/day</strong>.</li>
+                    <li>Designed an AOP-based HTTP interception framework that reduced integration testing time by <strong>90%</strong>.</li>
+                    <li>Architected BigQuery rationalization initiative delivering <strong>$77K+ annual savings</strong> per brand.</li>
+                    <li>Reduced support effort from 160+ hours/sprint to ~20 hours via observability improvements.</li>
+                </ul>
+            </div>
 
-        <div class="project-card">
-            <h3>Technical Manager - GCP @ egen (earlier SpringML Inc.)</h3>
-            <p><em>Mar 2020 – Apr 2023 | Hyderabad, India</em></p>
-            <ul>
-                <li><strong>Enterprise Scale:</strong> Architected a <strong>100+ TB distributed data lake</strong> on GCP enabling competitor analytics. Built an enterprise integration platform processing 3M+ messages/day using Apache Beam, Dataflow, and Snowflake.</li>
-                <li><strong>Public Health Innovation:</strong> Engineered the world's 1st COVID-19 Contact Tracing mobile application (Covidwise) for the state of Virginia, ensuring PII privacy. Scaled to North Carolina and Michigan. Architected a HIPAA-compliant lab reporting system integrating 200+ labs with the CDC.</li>
-                <li><strong>AI & ML Integrations:</strong> Conceptualized a Video Interview solution with caption generation and real-time plagiarism detection. Designed a CJIS-compliant entity resolution platform for 5M+ records.</li>
-                <li><strong>Engineering Leadership:</strong> Built and scaled a 21-member cross-functional engineering team, driving delivery governance and cloud-native POCs that contributed to a 5-10% YoY revenue growth.</li>
-            </ul>
-        </div>
+            <div class="card">
+                <span class="date">Mar 2020 – Apr 2023</span>
+                <h3>Technical Manager @ egen (SpringML)</h3>
+                <ul>
+                    <li>Built and scaled a <strong>21-member</strong> cross-functional engineering team.</li>
+                    <li>Engineered the world's 1st <strong>COVID-19 Contact Tracing</strong> app (Covidwise) for Virginia, NC, and Michigan.</li>
+                    <li>Architected a <strong>100+ TB distributed data lake</strong> on GCP for competitor analytics.</li>
+                    <li>Built an enterprise integration platform processing 3M+ messages/day using Apache Beam & Snowflake.</li>
+                </ul>
+            </div>
 
-        <div class="project-card">
-            <h3>Project Leader @ Oracle</h3>
-            <p><em>Feb 2016 – Mar 2020 | Hyderabad, India</em></p>
-            <ul>
-                <li><strong>Performance Engineering:</strong> Re-architected 10+ PLSQL preprocessing pipelines, radically reducing 800K-item processing time from 1 hour 40 minutes to just 85 seconds, enabling 10M+ daily item imports.</li>
-                <li><strong>Tooling & Automation:</strong> Engineered 'Smart Excel' using VBA.NET, empowering Product Managers to validate 100K+ records independently against the PIM system.</li>
-                <li><strong>Enterprise Integration:</strong> Orchestrated the design of enterprise SOA/microservices within the SCM Cloud ecosystem, optimizing cross-module performance (Inventory, Receiving, Shipping) by 20%.</li>
-            </ul>
-        </div>
+            <div class="card">
+                <span class="date">Feb 2016 – Mar 2020</span>
+                <h3>Project Leader @ Oracle</h3>
+                <ul>
+                    <li>Re-architected 10+ PLSQL pipelines, reducing 800K-item processing time from <strong>100m to 85s</strong>.</li>
+                    <li>Engineered <strong>'Smart Excel'</strong> using VBA.NET for Product Managers to validate 100K+ records.</li>
+                    <li>Optimized cross-module performance (Inventory, Shipping, etc.) by 20% in SCM Cloud.</li>
+                </ul>
+            </div>
 
-        <div class="project-card">
-            <h3>Software Engineer @ Lookout (earlier CipherCloud)</h3>
-            <p><em>Jun 2014 – Feb 2016 | Hyderabad, India</em></p>
-            <ul>
-                <li>Designed an automated XML merging framework for 200+ configuration files, eliminating deployment failures and accelerating enterprise upgrades from days to 20 minutes.</li>
-                <li>Owned the email encryption module, upgrading cryptographic protocols and eliminating legacy SSLv3 vulnerabilities.</li>
-            </ul>
-        </div>
-
-        <div class="project-card">
-            <h3>Systems Engineer @ TCS</h3>
-            <p><em>Oct 2011 – May 2014 | Hyderabad, India</em></p>
-            <ul>
-                <li>Implemented broadband service orchestration (E-Line, E-LAN, VPLS, VPWS) for MET, MSP, AXX, and VXX nodes.</li>
-                <li>Redesigned Middleware using Netconf & Yang, creating an adapter for unified Data Modeling Language (RFC 6020).</li>
-            </ul>
+            <div class="card">
+                <span class="date">Jun 2014 – Feb 2016</span>
+                <h3>Software Engineer @ Lookout</h3>
+                <ul>
+                    <li>Designed an XML merging framework for 200+ config files, accelerating upgrades from days to 20 mins.</li>
+                    <li>Owned email encryption module, upgrading protocols and removing SSLv3 vulnerabilities.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <section id="education" class="container">
+    <section id="projects" class="container reveal">
+        <h2>Key Projects & Innovations</h2>
+        <div class="card-grid">
+            <div class="card">
+                <h3>NLP Document Summarizer</h3>
+                <p>Created an NLP model for NATO’s act-foresight group to summarize and analyze documents, aiding in strategic decision-making.</p>
+            </div>
+            <div class="card">
+                <h3>Video Interview Solution</h3>
+                <p>Conceptualized AI-driven solution with caption generation, plagiarism detection, and dynamic problem selection.</p>
+            </div>
+            <div class="card">
+                <h3>Entity Resolution Platform</h3>
+                <p>Designed a CJIS-compliant person matching algorithm handling 5M+ records for Massachusetts.</p>
+            </div>
+            <div class="card">
+                <h3>Web-Search Engine</h3>
+                <p>Academic project: Designed a web-based text search engine for .doc, .pdf, .xls files using Linux, PHP, and JS.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="container reveal">
         <h2>Education & Accolades</h2>
-        <div class="project-card">
-            <h3>Education</h3>
-            <p><strong>BITS Pilani</strong> | M.Tech. Artificial Intelligence & Machine Learning (Nov 2023 - Oct 2025) <em>CGPA: 9/10</em></p>
-            <p><strong>KIIT University</strong> | B.Tech. Computer Science & Engineering (Jul 2007 - May 2011) <em>CGPA: 8.37/10</em></p>
-        </div>
-        
-        <div class="project-card">
-            <h3>Awards & Recognition</h3>
-            <ul>
-                <li><strong>Mountain Movers Award (Jan 2022):</strong> Recognized for consistently delivering complex projects at egen/SpringML.</li>
-                <li><strong>Project of the Year (Jan 2021):</strong> Awarded for spearheading the development of the world's first contact tracing mobile app, Covidwise.</li>
-                <li><strong>Make a Difference Award (Sep 2019):</strong> Acknowledged by Oracle for significant contributions to PLSQL code performance tuning.</li>
-                <li><strong>On the Spot Award (Oct 2013):</strong> Awarded by TCS for building VPWS service from scratch.</li>
-            </ul>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Education</h3>
+                <p><strong>BITS Pilani</strong> | M.Tech. AI & ML (2023 - 2025)</p>
+                <p><strong>KIIT University</strong> | B.Tech. CSE (2007 - 2011)</p>
+                <br>
+                <h4>Certifications</h4>
+                <p>Google Cloud Certified Professional Data Engineer</p>
+                <p>Professional Scrum Master 1</p>
+            </div>
+            <div class="card">
+                <h3>Competitive Achievements</h3>
+                <ul>
+                    <li><strong>IIT JEE 2007:</strong> Secured AIR-6359 (Top 3%)</li>
+                    <li><strong>CUSAT 2007:</strong> Secured AIR-443</li>
+                    <li><strong>KIITEE 2007:</strong> Secured AIR-48 (Merit Scholarship)</li>
+                    <li><strong>Shatranj:</strong> 2nd Runner up in Chess Tournament (100+ participants)</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Major Awards</h3>
+                <ul>
+                    <li><strong>Mountain Movers (2022):</strong> Consistent complex project delivery.</li>
+                    <li><strong>Project of the Year (2021):</strong> For Covidwise Contact Tracing App.</li>
+                    <li><strong>Make a Difference (2019):</strong> Oracle Performance Tuning contribution.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
-    <section id="publications" class="container">
-        <h2>Technical Publications & Blogs</h2>
-        <div class="project-card">
-            <ul>
-                <li>A guide to integrating Dialogflow Messenger with SharePoint</li>
-                <li>Integrating Microsoft Teams and Dialogflow using Azure Bot Service</li>
-                <li>Centralized Lab Reporting: A need of the hour</li>
-                <li>Streamline Data Storage With Apache Beam's Built-In And Custom I/O Connectors</li>
-                <li>Video Interview Solutions leveraging AI</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="contact" class="container">
+    <section id="contact" class="container reveal">
         <h2>Let's Connect</h2>
-        <p>I am always open to discussing massive scale distributed systems, cloud architecture, and technical leadership.</p>
-        <p>
-            <a href="mailto:mukundnjoy@gmail.com">Email</a> | 
-            <a href="https://www.linkedin.com/in/mukund-kumar-32068137/" target="_blank">LinkedIn</a> | 
-            <a href="https://github.com/mukund-k-sharma" target="_blank">GitHub</a> | 
-            <a href="https://leetcode.com/Mukundnjoy" target="_blank">LeetCode</a> | 
-            <a href="https://www.hackerrank.com/mukundnjoy" target="_blank">HackerRank</a>
-        </p>
+        <div class="card">
+            <p>Always open to discussing massive scale distributed systems, cloud architecture, and technical leadership.</p>
+            <div class="social-links" style="margin-top: 30px;">
+                <a href="mailto:mukundnjoy@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/mukund-kumar-32068137/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/mukund-k-sharma" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://leetcode.com/Mukundnjoy" target="_blank"><i class="fas fa-code"></i></a>
+            </div>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Mukund Kumar. All rights reserved.</p>
+        <p>&copy; 2026 Mukund Kumar. Built with <i class="fas fa-heart" style="color: var(--accent-color);"></i> for Distributed Systems.</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
