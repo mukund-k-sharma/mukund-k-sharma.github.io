@@ -172,7 +172,7 @@ When running at a **48,000 token** limit with my chosen optimizations, the alloc
 | **Remaining Safety Overhead** | ~34.00 MiB | GPU VRAM |
 | **Total Allocation Profile** | **5.91 / 6.00 GiB** | **GPU Confirmed** |
 
-Remaining layers (only **3 layers** left behind!) and overflow context buffers are pushed safely into the system RAM pool, which actively draws roughly `7.36 GiB / 15.5 GiB` total during runtime.
+The remaining 3 layers (LOL!) and their associated CPU KV cache (which incredibly requires only ~99 MB of RAM) are pushed to the system pool. It is worth noting that my total system RAM hovered around 7.36 GiB / 15.5 GiB, but this included my heavy development environment running simultaneously with the LLM (30+ Chrome tabs, VS Code, Sublime Text, YouTube, and the OS). The LLM's actual footprint on the system RAM is remarkably light :O
 
 ---
 
