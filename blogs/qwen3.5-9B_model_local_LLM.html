@@ -257,7 +257,10 @@
         marked.setOptions({ breaks: false, gfm: true });
 
         fetch('qwen3.5-9B_model_local_LLM.md')
-            .then(function(r) { return r.text(); })
+            .then(function(r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.text();
+            })
             .then(function(md) {
                 var content = md.replace(/^---[\s\S]*?---\s*/, '');
                 document.getElementById('blog-content').innerHTML = marked.parse(content);
