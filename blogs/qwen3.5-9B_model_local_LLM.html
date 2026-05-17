@@ -254,29 +254,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
     <script>
-        // Configure marked with highlight.js
-        marked.setOptions({
-            highlight: function(code, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    return hljs.highlight(code, { language: lang }).value;
-                }
-                return hljs.highlightAuto(code).value;
-            },
-            breaks: false,
-            gfm: true
-        });
+        marked.setOptions({ breaks: false, gfm: true });
 
-        // Fetch the markdown file and render it
         fetch('qwen3.5-9B_model_local_LLM.md')
-            .then(r => r.text())
-            .then(md => {
-                // Strip YAML front matter
-                const content = md.replace(/^---[\s\S]*?---\s*/, '');
+            .then(function(r) { return r.text(); })
+            .then(function(md) {
+                var content = md.replace(/^---[\s\S]*?---\s*/, '');
                 document.getElementById('blog-content').innerHTML = marked.parse(content);
+                hljs.highlightAll();
             })
-            .catch(() => {
+            .catch(function(err) {
                 document.getElementById('blog-content').innerHTML =
-                    '<p>Failed to load blog content. <a href="https://github.com/mukund-k-sharma/mukund-k-sharma.github.io/blob/main/blogs/qwen3.5-9B_model_local_LLM.md">Read on GitHub instead.</a></p>';
+                    '<p style="color:#e2e8f0;">Failed to load blog content. <a href="https://github.com/mukund-k-sharma/mukund-k-sharma.github.io/blob/main/blogs/qwen3.5-9B_model_local_LLM.md">Read on GitHub instead.</a></p>';
             });
     </script>
 
