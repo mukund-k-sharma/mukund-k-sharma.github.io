@@ -365,3 +365,155 @@ h2 {
     font-size: 0.85rem;
     text-align: center;
 }
+
+/* --- Deep Dive Accordion (Progressive Disclosure UI) --- */
+details[open] ~ .deep-dive, details .deep-dive, details deep-dive {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    margin-top: 32px;
+    padding: 32px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Divider strip between sections */
+.dive-divider {
+    height: 1px;
+    background: linear-gradient(90deg, rgba(94, 234, 212, 0.2) 0%, transparent 100%);
+    margin: 24px 0 16px 0;
+}
+
+/* Deep dive inside .exp-details (Education section) */
+.exp-details details[class="deep-dive"] {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.details summary {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.details summary:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.details summary::after {
+    content: "\f078"; /* FontAwesome chevron-down */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.65rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+details[open] > summary {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.details .dive-content {
+    background: rgba(15, 23, 42, 0.4);
+    padding: 32px;
+    margin-top: 24px;
+    border-radius: 0 0 8px 8px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.details .dive-content ul {
+    list-style: none;
+    margin-top: 32px;
+    padding-left: 0;
+}
+
+.details .dive-content ul:last-child {
+    margin-bottom: 0;
+}
+
+.details .dive-content > ul + ul {
+    margin-top: 32px;
+}
+
+.details .dive-content li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: var(--text-main);
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+.details .dive-content li:last-child {
+    margin-bottom: 0;
+}
+
+.details .dive-content h4 {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.details .dive-content h4:last-child {
+    margin-bottom: 0;
+}
+
+.details .dive-content li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+/* Icon-based bullet alternative */
+.details .dive-content li[data-bullet]::before {
+    content: attr(data-bullet);
+    font-size: 0.7rem;
+}
+
+/* Two-column grid for sections with 6+ items */
+.dive-content-grid ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* Make first item span full width for intro */
+.dive-content-grid ul > li:first-child {
+    grid-column: span 2;
+}
+
+.details .dive-content li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* Blog Link Style (for Experience cards) */
+.blog-link {
+    color: #64ffda;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.blog-link:hover {
+    color: var(--accent);
+}

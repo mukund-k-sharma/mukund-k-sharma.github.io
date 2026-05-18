@@ -1,0 +1,162 @@
+/* Deep Dive Accordion Styles */
+/* Applied to <details class="deep-dive"> elements */
+
+deep-dive {
+    details {
+        background-color: rgba(30, 41, 59, 0.3);
+        border: 1px solid rgba(94, 234, 212, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    details[open] {
+        border-color: rgba(94, 234, 212, 0.4);
+    }
+
+    summary {
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        color: var(--text-light);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background-color 0.2s ease;
+    }
+
+    summary:hover {
+        background-color: rgba(94, 234, 212, 0.08);
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .chevron {
+        color: var(--accent);
+        font-size: 0.75rem;
+        transition: transform 0.3s ease;
+        flex-shrink: 0;
+    }
+
+    details[open] .chevron {
+        transform: rotate(180deg);
+    }
+
+    .deep-dive-content {
+        padding: 16px 20px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .deep-dive-content ul {
+        list-style: none;
+        margin: 0;
+        padding-left: 0;
+    }
+
+    .deep-dive-content li {
+        padding: 4px 0;
+        font-size: 0.9rem;
+        color: var(--text-main);
+        line-height: 1.6;
+        padding-left: 16px;
+        position: relative;
+    }
+
+    .deep-dive-content li::before {
+        content: "•";
+        position: absolute;
+        left: 4px;
+        color: var(--accent);
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 1023px) {
+    details {
+        background-color: rgba(30, 41, 59, 0.4);
+    }
+
+    summary {
+        padding: 14px 16px;
+    }
+
+    .deep-dive-content {
+        padding: 14px 16px 16px;
+    }
+}
+
+/* Ensure deep-dive sections have proper spacing in experience cards */
+.experience-card .deep-dive {
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+/* Deep dive content typography */
+.deep-dive h4 {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 16px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.deep-dive h4:first-of-type {
+    margin-top: 0;
+}
+
+.deep-dive p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Tags in deep dive */
+.deep-dive .tech-tags {
+    margin-top: 12px;
+}
+
+.deep-dive .tag {
+    background: rgba(94, 234, 212, 0.12);
+    color: var(--accent);
+    font-size: 0.7rem;
+    padding: 3px 10px;
+}
+
+/* Link styling in deep dive */
+.deep-dive a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.deep-dive a:hover {
+    text-decoration: underline;
+}
+
+/* Metric highlights in deep dive */
+.deep-dive .metric-highlight {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
