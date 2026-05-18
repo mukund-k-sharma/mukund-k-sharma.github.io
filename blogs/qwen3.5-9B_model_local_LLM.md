@@ -11,13 +11,13 @@ Local AI development often feels like a privilege reserved for massive desktop r
 
 You play a brutal game of **VRAM Tetris**.
 
-This is a detailed breakdown of how I configured my system, compiled a custom `llama.cpp` fork for extreme cache compression, and heavily optimized my server flags to successfully run **Qwen 3.5 9B** with a massive **48,000-token context window** — without triggering a single `cudaMalloc` failure.
+This is a detailed breakdown of how I configured my system, compiled a custom `llama.cpp` fork for extreme cache compression, and heavily optimized my server flags to successfully run **Qwen 3.5 9B** with a massive **48,000-token context window** — and then iteratively pushed it further to a **64,000-token ceiling** at **15–20 tok/s** through a brutal optimization journey.
 
 ---
 
 ## TL;DR: The Speed Run
 
-By combining a community **TurboQuant** fork, **mixed-precision KV caching**, **single-sequence queue enforcement**, and **OS graphics optimization**, I squeezed a **48K context window** and a dense **9B parameter model** into a **6GB laptop GPU**. The final setup delivers a blazing **530.44 tok/s** prompt ingestion rate and a highly stable **7.75 tok/s** generation speed, acting as a completely local backend for **Claude Code**.
+By combining a community **TurboQuant** fork, **mixed-precision KV caching**, **single-sequence queue enforcement**, and **OS graphics optimization**, I squeezed a **48K context window** and a dense **9B parameter model** into a **6GB laptop GPU**. The initial setup delivered a blazing **530.44 tok/s** prompt ingestion rate and a stable **7.75 tok/s** generation speed. Then, through a series of incremental optimizations — thread tuning, a dangerous Flash Attention fallback trap, and a strategic model downsizing pivot to **IQ4_XS** — I pushed the final setup to **64K context** at **15.26 – 19.78 tok/s**, acting as a completely local backend for **Claude Code**.
 
 ---
 
@@ -37,9 +37,9 @@ Before diving into the steps, here is the hardware profile of my Lenovo Legion l
 | **OS** | Ubuntu 24.04 LTS (Kernel: Linux 6.17) |
 | **Windowing System** | Wayland (GNOME 46) |
 
-### Production Benchmarks
+### Initial Baseline Benchmarks
 
-The metrics below reflect the real-world performance of this optimized setup under a massive 30,147-token context payload:
+The metrics below reflect the real-world performance of the initial baseline setup (Q4_K_M, `-ngl 29`, 48K context) under a massive 30,147-token context payload:
 
 | Metric | Result |
 | :--- | :--- |
@@ -48,12 +48,15 @@ The metrics below reflect the real-world performance of this optimized setup und
 | **Context Success Limit** | **48,000 tokens** — fully tested and verified up to the maximum ceiling without failure |
 | **Qualitative Stability** | **turbo4** V-cache compression yielded no observable degradation in system architecture reasoning, component mapping, or context recall |
 
+> **After Optimization:** Through the incremental changes detailed in [Phase 5](#phase-5-the-core-optimization-journey), the final setup reached **15.26 – 19.78 tok/s** generation under 49K-token payloads with a **64,000-token** context ceiling. See the [final benchmarks](#final-optimized-benchmarks) for the complete picture.
+
 ---
 
 **Failed Configurations:**
 
-* `64,000 ctx` + `-ngl 26`: Survived initial launch but routinely encountered **OOM** crashes during active agent multi-tool calls.
-* `48,000 ctx` + `-ngl 29` (with hardware-accelerated Chrome open): Allocation hit `5.95 / 6.00 GiB`, leaving under 50 MB free. Desktop interactions caused immediate `cudaMalloc` failures. Stable only after evicting Chrome from the GPU.
+* `64,000 ctx` + `-ngl 26` (Q4_K_M): Survived initial launch but routinely encountered **OOM** crashes during active agent multi-tool calls.
+* `48,000 ctx` + `-ngl 29` (Q4_K_M) (with hardware-accelerated Chrome open): Allocation hit `5.95 / 6.00 GiB`, leaving under 50 MB free. Desktop interactions caused immediate `cudaMalloc` failures. Stable only after evicting Chrome from the GPU.
+* `--cache-type-k q4_0` + `-fa on`: Flash Attention lacks optimized CUDA kernels for 4-bit Key caches. The server silently fell back to a CPU computation loop, dropping GPU utilization to **0%** while the CPU spiked to **100%** and hit thermal limits at **94–95°C**. See [Phase 5](#phase-5-the-core-optimization-journey) for the full breakdown.
 
 ---
 
@@ -129,6 +132,8 @@ mkdir -p ~/models
 mv ~/Downloads/Qwen3.5-9B-Q4_K_M.gguf ~/models/
 ```
 
+> **Note:** During the [optimization journey in Phase 5](#phase-5-the-core-optimization-journey), I later pivoted from this Q4_K_M file to the smaller **IQ4_XS** format compiled with Unsloth's Importance Matrix.
+
 ---
 
 ## Phase 2: OS & Hardware Optimizations
@@ -174,6 +179,8 @@ When running at a **48,000 token** limit with my chosen optimizations, the alloc
 
 The remaining 3 layers (LOL!) and their associated CPU KV cache (which incredibly requires only ~99 MB of RAM) are pushed to the system pool. It is worth noting that my total system RAM hovered around 7.36 GiB / 15.5 GiB, but this included my heavy development environment running simultaneously with the LLM (30+ Chrome tabs, VS Code, Sublime Text, YouTube, and the OS). The LLM's actual footprint on the system RAM is remarkably light :O
 
+> **After Optimization:** The [Phase 5 model downsizing pivot](#3-the-structural-pivot-model-downsizing--feature-preserving) to IQ4_XS shed ~500 MB of base weight, pushing the grid from 29 to **31 layers** and expanding the context window to **64K tokens**. See the [final VRAM grid](#the-final-optimized-vram-grid) for the updated allocation.
+
 ---
 
 ## Phase 4: Slicing the Runtime Parameters
@@ -196,6 +203,8 @@ Coding agents constantly mutate historical logs, causing fragmented spaces to bu
 * **`-t 6`**: Limits text generation strictly to my i7's 6 physical cores, bypassing hyper-threading overhead to speed up token execution.
 * **`-tb 12`**: Instructs prompt ingestion to exploit all 12 hyper-threads simultaneously, accelerating data parsing across the motherboard bus.
 
+> **Note:** This was later refined to `-t 5` during the [optimization journey in Phase 5](#1-the-thread-contention-baseline-thread-tuning). Saturating all 6 cores caused thread contention with the OS. Leaving one core free instantly bumped generation from ~4.5 tok/s to 6.7–7.6 tok/s.
+
 ### 4. Memory-Mapped Math and Processing Overhead
 
 * **`-b 4096`**: The global **batch size**. Setting this to **4096** maximizes the tensor operations executed in parallel by the GPU during prompt processing, lowering the total time spent moving weights over the PCIe lane.
@@ -204,9 +213,76 @@ Coding agents constantly mutate historical logs, causing fragmented spaces to bu
 
 ---
 
+## Phase 5: The Core Optimization Journey
+
+The initial setup from Phases 1–4 was functional, but left significant performance on the table. What followed was a methodical series of experiments — each one building on the lessons of the last — that ultimately transformed the system from a sluggish ~4.5 tok/s baseline into a blazing ~15–20 tok/s powerhouse.
+
+### 1. The Thread Contention Baseline (Thread Tuning)
+
+**Initial State:** Running Qwen 3.5 9B with `-t 6` on a 6-core Intel i7 CPU. Token generation was sluggish, dragging at ~4.5 tok/s.
+
+**The Problem:** Setting thread allocation to match 100% of the physical cores forced the AI engine to battle Ubuntu's desktop compositor (Wayland), Chrome, and the NVIDIA drivers for execution cycles.
+
+**The Fix:** Dropped the processing threads to `-t 5`. Leaving exactly one core completely free for OS background operations instantly stabilized thread scheduling, bumping generation speed to **6.7 – 7.6 tok/s**.
+
+### 2. The Flash Attention Incompatibility Trap (Cache Experimentation)
+
+**The Tweak:** Attempted to aggressively slash the VRAM footprint of the context window by switching the Key cache configuration to `--cache-type-k q4_0` to try and push to `-ngl 30`.
+
+**The Problem:** Flash Attention (`-fa on`) lacks optimized CUDA kernels for 4-bit (`q4_0`) Key caches on this build. The server silently initiated a **CPU fallback loop** to calculate the heavy attention matrices.
+
+**The Result:** Prompt processing dropped significantly, the GPU sat completely idle at **0% utilization**, and the i7 CPU locked at **100%**, causing thermal spikes up to **94°C – 95°C**. This was a silent, invisible performance catastrophe — the logs showed no errors, but the GPU was doing nothing.
+
+### 3. The Structural Pivot (Model Downsizing & Feature Preserving)
+
+**The Strategy:** To restore hardware-accelerated Flash Attention, I reverted the Key cache to a high-fidelity `--cache-type-k q8_0`. To pay for the ~266 MB VRAM increase without sacrificing layer offloading, I shrunk the model footprint itself.
+
+**The Implementation:** I swapped the standard **Q4_K_M** weight file (5.68 GB) for the smaller, highly efficient **IQ4_XS** format (5.17 GB) compiled with **Unsloth's Importance Matrix (imatrix)**. An imatrix quantization analyzes which weight tensors contribute most to the model's output quality and allocates higher precision selectively, delivering exceptional quality-per-bit compared to a naive uniform quantization.
+
+**The Math:** This structural shift shed **~500 MB** of base weight from the GPU, freeing up the exact allocation grid required to safely hold a **64,000 token** context window over a high-precision 8-bit Key cache — while simultaneously pushing from **-ngl 29** to **-ngl 31**.
+
+### 4. Endgame: The Final Optimized VRAM Grid
+
+**The Setup:** Running the **IQ4_XS** model file at `-ngl 31`, `-t 5`, `--cache-type-k q8_0`, and `--cache-type-v turbo4`.
+
+**The Performance Output:** Flash Attention locked completely back onto the GPU's CUDA cores. Text generation speeds soared to an impressive **15.26 to 19.78 tokens per second** even under massive 49,000-token context payloads.
+
+**The Thermal Status:** GPU utilization steadied at a productive **88%** with a solid **74 W** power draw, pulling the computational load away from the CPU and dropping its utilization down to a healthy **31%**.
+
+### The Final Optimized VRAM Grid
+
+After the structural pivot, the VRAM allocation was completely restructured:
+
+| Component | VRAM Allocation | Location |
+| :--- | :--- | :--- |
+| **Model Weights** (31 / 32 Layers, IQ4_XS) | ~3.88 GiB | GPU VRAM |
+| **KV Cache Keys** (64K Context, `q8_0`) | ~531.25 MiB | GPU VRAM |
+| **KV Cache Values** (64K Context, `turbo4`) | ~265.63 MiB | GPU VRAM |
+| **CUDA Compute Buffers** (Graph Splits) | ~493.00 MiB | GPU VRAM |
+| **Desktop Compositor Reserve** (OS Shell UI) | ~407.00 MiB | GPU VRAM |
+| **Remaining Safety Overhead** | ~55.00 MiB | GPU VRAM |
+| **Total Allocation Profile** | **5.61 / 6.00 GiB** | **GPU Confirmed** |
+
+### Final Optimized Benchmarks
+
+| Metric | Baseline (Phase 1–4) | After Optimization (Phase 5) |
+| :--- | :--- | :--- |
+| **Model File** | Q4_K_M (5.68 GB) | IQ4_XS (5.17 GB) |
+| **GPU Layers** | 29 / 32 | 31 / 32 |
+| **Context Window** | 48,000 tokens | 64,000 tokens |
+| **Text Generation** | ~7.75 tok/s | **15.26 – 19.78 tok/s** |
+| **Threads (`-t`)** | 6 | 5 |
+| **GPU Utilization** | — | **88%** (74 W) |
+| **CPU Utilization** | — | **31%** |
+| **Thermal Status** | Occasional thermal spikes | Stable — no spikes |
+
+---
+
 ## The Production Execution Command
 
-Bringing all phases together results in the definitive, maxed-out command for local development environments with strict hardware parameters:
+### Initial Baseline Command (Phases 1–4)
+
+This was the original working configuration that established the stable baseline:
 
 ```bash
 ~/llama-cpp-turboquant/build/bin/llama-server \
@@ -226,11 +302,33 @@ Bringing all phases together results in the definitive, maxed-out command for lo
   --alias "qwen3.5-9b"
 ```
 
+### Final Optimized Command (After Phase 5)
+
+After the full optimization journey, the definitive maxed-out command becomes:
+
+```bash
+~/llama-cpp-turboquant/build/bin/llama-server \
+  --model "/home/user/models/Qwen3.5-9B-IQ4_XS.gguf" \
+  -ngl 31 \
+  -c 64000 \
+  -b 4096 \
+  -ub 512 \
+  -fa on \
+  -t 5 \
+  -tb 12 \
+  --cache-type-k q8_0 \
+  --cache-type-v turbo4 \
+  -np 1 \
+  --defrag-thold 0.1 \
+  --port 8080 \
+  --alias "qwen3.5-9b"
+```
+
 ---
 
 ## The Takeaway
 
-The bottleneck in local AI development is no longer intelligence — it's memory management. As cache compression techniques like **TurboQuant** mature and merge into mainline `llama.cpp`, the hardware floor for running production-quality coding agents will only keep dropping. The **6GB barrier** I navigated here will eventually look generous.
+The bottleneck in local AI development is no longer intelligence — it's memory management. Through a methodical optimization journey — from thread tuning, through a dangerous Flash Attention fallback trap, to a strategic model downsizing pivot — I transformed a sluggish ~4.5 tok/s setup into a **15–20 tok/s** production engine with a **64K context window** on just **6GB of VRAM**. As cache compression techniques like **TurboQuant** mature and imatrix quantizations like **IQ4_XS** become standard, the hardware floor for running production-quality coding agents will only keep dropping. The **6GB barrier** I navigated here will eventually look generous.
 
 ---
 
@@ -252,5 +350,10 @@ If your local server throws errors, track the root cause using this systematic m
 
 * **Root Cause**: Attempting to force extreme compression like `turbo3` or `turbo2` onto the context matrix, or running a low quantization on the Key cache layer.
 * **Remedy**: Restore your configuration cleanly to `--cache-type-k q8_0` and restrict high-compression exclusively to the Value cache layer (`--cache-type-v turbo4`).
+
+### 4. GPU at 0% While CPU Spikes to 100% (Silent Flash Attention Fallback)
+
+* **Root Cause**: Running Flash Attention (`-fa on`) with a 4-bit Key cache (`--cache-type-k q4_0`). This build lacks optimized CUDA kernels for `q4_0` Keys under Flash Attention, causing the server to silently fall back to CPU-based attention computation. No error is logged — the only symptom is the GPU sitting idle while the CPU thermal-throttles at **94–95°C**.
+* **Remedy**: Revert to `--cache-type-k q8_0`. If you need to reduce VRAM footprint, downsize the model weight file (e.g., from Q4_K_M to IQ4_XS) instead of compressing the Key cache below 8-bit. This preserves Flash Attention's GPU acceleration path.
 
 ---
